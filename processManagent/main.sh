@@ -1,5 +1,10 @@
 #!/bin/bash
 
+# Function to list all processes 
+all_process(){
+    ps aux
+}
+
 # Function to check maximum cpu consumtion
 max_cpu_comsump() {
     ps H -eo pid,pcpu | sort -nk2 | tail
@@ -46,7 +51,8 @@ while true; do
     echo "2. List processes consuming the most CPU"
     echo "3. Check IP address availability"
     echo "4. Manage firewall"
-    echo "5. Exit"
+    echo "5. List all running processes"
+    echo "6. Exit"
     read -p "Enter your choice: " choice
 
     case $choice in
@@ -54,7 +60,8 @@ while true; do
         2) max_cpu_comsump ;;
         3) check_ip ;;
         4) manage_firewall ;;
-        5) exit ;;
+        5) all_process ;; 
+        6) exit ;;
         *) echo "Invalid option";;
     esac
 done
