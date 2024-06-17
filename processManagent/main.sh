@@ -2,6 +2,7 @@
 
 # Function to check port availability
 thread_count() {
+    echo "Total number of threads :"
     ps -eLf|wc -l
 }
 
