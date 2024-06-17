@@ -1,5 +1,10 @@
 #!/bin/bash
 
+# Function to check maximum cpu consumtion
+max_cpu_comsump() {
+    ps H -eo pid,pcpu | sort -nk2 | tail
+}
+
 # Function to check port availability
 thread_count() {
     echo "Total number of threads :"
@@ -37,8 +42,8 @@ manage_firewall() {
 # Main menu
 while true; do
     echo "Choose an option:"
-    echo "1. Total number of threads"
-    echo "2. List service details"
+    echo "1. Number of threads"
+    echo "2. List processes consuming the most CPU"
     echo "3. Check IP address availability"
     echo "4. Manage firewall"
     echo "5. Exit"
@@ -46,7 +51,7 @@ while true; do
 
     case $choice in
         1) thread_count ;;
-        2) list_service_details ;;
+        2) max_cpu_comsump ;;
         3) check_ip ;;
         4) manage_firewall ;;
         5) exit ;;
